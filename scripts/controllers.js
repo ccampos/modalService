@@ -2,24 +2,9 @@
 (function() {
   var app;
 
-  app = angular.module('app', ['ui.keypress'], function($provide) {
-    return $provide.factory('notify', [
-      '$window', function(win) {
-        var msgs;
+  app = angular.module('app', ['ui.keypress']);
 
-        msgs = [];
-        return function(msg) {
-          msgs.push(msg);
-          if (msgs.length === 3) {
-            win.alert(msgs.join("\n"));
-            return msgs = [];
-          }
-        };
-      }
-    ]);
-  });
-
-  app.controller('ModalCtrl', [
+  app.controller('UICtrl', [
     '$scope', function($scope) {
       $scope.page_title = 'el titulo';
       return $scope.keypressCallback = function($event) {

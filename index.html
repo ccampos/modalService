@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <!--<html ng-app='app'>-->
-<html ng-app="MyServiceModule">
+<html ng-app="app">
     <head>
-        <title>Export Modal: Angular Service</title>
+        <title>Angular UI: Research Angular Services</title>
         <link rel='stylesheet' type='text/css' href='style/modal.css'></style>
         <script src="static/jquery-2.0.3.js"></script>
         <script src="static/angular.min.js"></script>
         <script src="ui-utils-master/modules/keypress/keypress.js"></script>
         <script src="scripts/controllers.js"></script>
     </head>
-    <body ng-controller='ModalCtrl'>
+    <body ng-controller='UICtrl'>
         <h1>{{page_title}}</h1>
         <textarea ui-keypress="{13 : 'keypressCallback($event)'}"></textarea>
         <textarea ui-keydown="{'alt-space' : 'keypressCallback($event)'}"></textarea>
