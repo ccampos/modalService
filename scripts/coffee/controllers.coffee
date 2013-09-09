@@ -1,11 +1,17 @@
-app = angular.module 'app', []
+app = angular.module 'app', ['ui.keypress'], ($provide) ->
+    $provide.factory 'notify', ['$window', (win) ->
+        msgs = []
+        (msg) ->
+            msgs.push msg
+            if msgs.length == 3
+                win.alert msgs.join "\n"
+                msgs = []
+    ]
 
 app.controller 'ModalCtrl', ['$scope', ($scope) ->
-   $scope.page_title = 'el titulo' 
+    $scope.page_title = 'el titulo' 
+    $scope.keypressCallback = ($event) ->
+        alert('Voila!')
+        $event.preventDefault()
 ]
-
-app.factory 'ModalService', ->
-    shinyNewModalServiceInstance
-    # factory function body that constructs shinyNewModalServiceInstance
-    return shinyNewModalServiceInstance
 

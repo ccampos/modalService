@@ -2,16 +2,31 @@
 (function() {
   var app;
 
-  app = angular.module('app', []);
+  app = angular.module('app', ['ui.keypress'], function($provide) {
+    return $provide.factory('notify', [
+      '$window', function(win) {
+        var msgs;
+
+        msgs = [];
+        return function(msg) {
+          msgs.push(msg);
+          if (msgs.length === 3) {
+            win.alert(msgs.join("\n"));
+            return msgs = [];
+          }
+        };
+      }
+    ]);
+  });
 
   app.controller('ModalCtrl', [
     '$scope', function($scope) {
-      return $scope.page_title = 'el titulo';
+      $scope.page_title = 'el titulo';
+      return $scope.keypressCallback = function($event) {
+        alert('Voila!');
+        return $event.preventDefault();
+      };
     }
   ]);
-
-  app.factory('ModalService', function() {
-    shinyNewModalServiceInstance;    return shinyNewModalServiceInstance;
-  });
 
 }).call(this);
