@@ -1,5 +1,5 @@
-angular.module('MyServiceModule', []).
-    factory 'notify', ['$window', (win) ->
+myModule = angular.module 'myModule', [], ($provide) ->
+    $provide.factory 'notify', ['$window', (win) ->
         msgs = []
         (msg) ->
             msgs.push msg
@@ -7,19 +7,7 @@ angular.module('MyServiceModule', []).
                 win.alert msgs.join "\n"
                 msgs = []
     ]
-    .service 'sharedProperties', ->
-        property = 'First'
-        
-        return
-            getProperty: ->
-                return property
-            setProperty: (value) ->
-                property = value
 
-myController = (scope, notifyService) ->
-    scope.callNotify = (msg) ->
-        notifyService msg
-
-myController.$inject = ['$scope', 'notify']
-
-MyServiceModule.controller 'myController', [myController]
+myModule.controller 'ModalCtrl', ['$scope', ($scope) ->
+    $scope.page_title = 'Triunfo'
+]
