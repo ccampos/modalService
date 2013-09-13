@@ -2,14 +2,7 @@
 (function() {
   var notifyCtrl, notifyModule;
 
-  notifyModule = angular.module('notifyModule', []).config([
-    '$routeProvider', function($routeProvider) {
-      return $routeProvider.when('/landing', {
-        templateUrl: '/landing-partial',
-        controller: notifyCtrl
-      });
-    }
-  ]);
+  notifyModule = angular.module('notifyModule', []);
 
   notifyModule.run(function($templateCache, $http) {
     var modalHtml;
