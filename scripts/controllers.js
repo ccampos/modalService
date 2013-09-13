@@ -4,6 +4,10 @@
 
   notifyModule = angular.module('notifyModule', []);
 
+  notifyModule.run(function($templateCache) {
+    return $templateCache.put('templateId.html', 'This is the content of the template');
+  });
+
   notifyModule.factory('notify', [
     '$window', function(win) {
       var msgs;

@@ -12,6 +12,6 @@
         <p>Let's try this simple notify service, injected into the controller ...</p>
         <input ng-init="message='test'" ng-model="message">
         <button ng-click="callNotify(message)">NOTIFY</button>
-        <h1>{{page_title}}</h1>
+        <div ng-include=" 'templateId.html' "></div>
     </body>
 </html>
