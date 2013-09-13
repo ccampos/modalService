@@ -9,7 +9,8 @@
     </head>
 
     <body ng-controller='notifyCtrl'>
-        <input ng-init="message='test'" ng-model="message">
+        <input ng-init="message='donkey'" ng-model="message">
+        <input ng-init="mensaje='burrito'" ng-model="mensaje">
         <button ng-click="callNotify(message)">NOTIFY</button>
         <div ng-include=" 'modal.html' "></div>
     </body>

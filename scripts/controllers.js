@@ -23,6 +23,15 @@
   ]);
 
   notifyCtrl = function(scope, notifyService) {
+    scope.animals = [
+      {
+        name: 'giraffe'
+      }, {
+        name: 'elephant'
+      }, {
+        name: 'monkey'
+      }
+    ];
     return scope.callNotify = function(msg) {
       return notifyService(msg);
     };

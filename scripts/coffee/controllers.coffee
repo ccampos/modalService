@@ -11,6 +11,13 @@ notifyModule.factory 'notify', ['$window', (win) ->
 ]
 
 notifyCtrl = (scope, notifyService) ->
+    scope.animals = [
+        name: 'giraffe'
+    ,
+        name: 'elephant'
+    ,
+        name: 'monkey'
+    ]
     scope.callNotify = (msg) ->
         notifyService msg
 
