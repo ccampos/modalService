@@ -12,8 +12,17 @@
     }
   ]);
 
+  myModule.directive('pullTemplate', function() {
+    return {
+      restrict: 'A',
+      templateUrl: 'views/directives/modal.html',
+      scope: {
+        'client': '='
+      }
+    };
+  });
+
   myController = function(scope, notifyService) {
-    scope.page_title = 'Hola Mundo!';
     return scope.callNotify = function(msg) {
       return notifyService(msg);
     };
