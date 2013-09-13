@@ -1,12 +1,8 @@
 myModule = angular.module 'myModule', []
 
 myModule.factory 'notify', ['$window', (win) ->
-    msgs = []
     (msg) ->
-        msgs.push msg
-        if msgs.length == 3
-            win.alert msgs.join "\n"
-            msgs = []
+        win.alert msg
 ]
 
 myController = (scope, notifyService) ->

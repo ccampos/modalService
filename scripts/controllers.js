@@ -6,15 +6,8 @@
 
   myModule.factory('notify', [
     '$window', function(win) {
-      var msgs;
-
-      msgs = [];
       return function(msg) {
-        msgs.push(msg);
-        if (msgs.length === 3) {
-          win.alert(msgs.join("\n"));
-          return msgs = [];
-        }
+        return win.alert(msg);
       };
     }
   ]);
