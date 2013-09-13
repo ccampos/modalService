@@ -1,23 +1,18 @@
-myModule = angular.module 'myModule', []
+notifyModule = angular.module 'notifyModule', []
 
-myModule.factory 'notify', ['$window', (win) ->
+notifyModule.factory 'notify', ['$window', (win) ->
+    msgs = []
     (msg) ->
-        win.alert msg
+        msgs.push msg
+        if msgs.length == 3
+            win.alert msgs.join "\n"
+            msgs = []
 ]
 
-myModule.directive 'pullTemplate', ->
-    return { 
-        restrict: 'A'
-        templateUrl: 'views/directives/modal.html'
-        scope: 
-            'client': '='
-    }
-
-myController = (scope, notifyService) ->
+notifyCtrl = (scope, notifyService) ->
     scope.callNotify = (msg) ->
         notifyService msg
 
-myController.$inject = ['$scope', 'notify']
+notifyCtrl.$inject = ['$scope', 'notify']
 
-myModule.controller 'elController', myController
-
+notifyModule.controller 'notifyCtrl', notifyCtrl

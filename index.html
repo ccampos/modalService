@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app='myModule'>
+<html ng-app='notifyModule'>
     <head>
         <title>Export Modal: Angular Service</title>
         <link rel='stylesheet' type='text/css' href='style/modal.css'></style>
@@ -8,12 +8,11 @@
         <script src="scripts/controllers.js"></script>
     </head>
 
-    <body ng-controller='elController'>
+    <body ng-controller='notifyCtrl'>
         <p>Let's try this simple notify service, injected into the controller ...</p>
         <input ng-init="message='test'" ng-model="message">
         <button ng-click="callNotify(message)">NOTIFY</button>
         <p>(you have to click 3 times to see an alert)</p>
         <h1>{{page_title}}</h1>
-        <div pull-template></div>
     </body>
 </html>
