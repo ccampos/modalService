@@ -2,10 +2,20 @@
 (function() {
   var notifyCtrl, notifyModule;
 
-  notifyModule = angular.module('notifyModule', []);
+  notifyModule = angular.module('notifyModule', []).config([
+    '$routeProvider', function($routeProvider) {
+      return $routeProvider.when('/landing', {
+        templateUrl: '/landing-partial',
+        controller: notifyCtrl
+      });
+    }
+  ]);
 
-  notifyModule.run(function($templateCache) {
-    return $templateCache.put('templateId.html', 'This is the content of the template');
+  notifyModule.run(function($templateCache, $http) {
+    var modalHtml;
+
+    modalHtml = $http.get('views/directives/modal.html');
+    return $templateCache.put('modal.html', modalHtml);
   });
 
   notifyModule.factory('notify', [

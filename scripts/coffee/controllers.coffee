@@ -1,8 +1,14 @@
-notifyModule = angular.module 'notifyModule', []
+notifyModule = angular.module('notifyModule', []).
+    config ['$routeProvider', ($routeProvider) ->
+        $routeProvider.
+            when '/landing',
+                templateUrl: '/landing-partial'
+                controller: notifyCtrl
+    ]
 
-notifyModule.run ($templateCache) ->
-    $templateCache.put 'templateId.html', 'This is the content of the template'
-
+notifyModule.run ($templateCache, $http) ->
+    modalHtml = $http.get 'views/directives/modal.html'
+    $templateCache.put 'modal.html', modalHtml
 notifyModule.factory 'notify', ['$window', (win) ->
     msgs = []
     (msg) ->
