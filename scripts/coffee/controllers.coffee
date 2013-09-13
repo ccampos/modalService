@@ -3,10 +3,7 @@ notifyModule = angular.module 'notifyModule', []
 notifyModule.factory 'notify', ['$window', (win) ->
     msgs = []
     (msg) ->
-        msgs.push msg
-        if msgs.length == 3
-            win.alert msgs.join "\n"
-            msgs = []
+        win.alert msg
 ]
 
 notifyCtrl = (scope, notifyService) ->
