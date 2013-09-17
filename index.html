@@ -16,7 +16,8 @@
         </div>-->
 
         <div ng-controller='SimpleController'>
-            <li ng-repeat='customer in customers'>{{ customer.name }} - {{ customer.city }}</li>
+            <input type='text' ng-model='filter.name'>
+            <li ng-repeat='customer in customers | filter: filter.name'>{{ customer.name }} - {{ customer.city }}</li>
             <input type='text' ng-model='newCustomer.city' placeholder='Enter City'>
             <input type='text' ng-model='newCustomer.name' placeholder='Enter Name'>
             <button ng-click='addCustomer()'>Add Customer</button>
