@@ -37,9 +37,12 @@ notifyModule.factory 'modalService', () ->
 notifyModule.controller 'SimpleController', ($scope, modalService) ->
     $scope.customers = []
 
-    console.log modalService.getCustomers()
-
     init = ->
         $scope.customers = modalService.getCustomers()
 
     init()
+
+    $scope.addCustomer = ->
+        $scope.customers.push
+            name: $scope.newCustomer.name
+            city: $scope.newCustomer.city

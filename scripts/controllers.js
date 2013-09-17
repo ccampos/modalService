@@ -58,11 +58,16 @@
     var init;
 
     $scope.customers = [];
-    console.log(modalService.getCustomers());
     init = function() {
       return $scope.customers = modalService.getCustomers();
     };
-    return init();
+    init();
+    return $scope.addCustomer = function() {
+      return $scope.customers.push({
+        name: $scope.newCustomer.name,
+        city: $scope.newCustomer.city
+      });
+    };
   });
 
 }).call(this);
