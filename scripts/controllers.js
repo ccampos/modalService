@@ -32,4 +32,37 @@
 
   notifyModule.controller('notifyCtrl', notifyCtrl);
 
+  notifyModule.factory('modalService', function() {
+    var customers, factory;
+
+    customers = [
+      {
+        name: 'John Smith',
+        city: 'Atlanta'
+      }, {
+        name: 'John Doe',
+        city: 'New York'
+      }, {
+        name: 'Jane Dow',
+        city: 'Cincinnati'
+      }
+    ];
+    factory = {};
+    factory.getCustomers = function() {
+      return customers;
+    };
+    return factory;
+  });
+
+  notifyModule.controller('SimpleController', function($scope, modalService) {
+    var init;
+
+    $scope.customers = [];
+    console.log(modalService.getCustomers());
+    init = function() {
+      return $scope.customers = modalService.getCustomers();
+    };
+    return init();
+  });
+
 }).call(this);

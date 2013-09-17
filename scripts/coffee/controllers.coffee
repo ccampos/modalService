@@ -17,3 +17,29 @@ notifyCtrl = (scope, notifyService) ->
 notifyCtrl.$inject = ['$scope', 'notify']
 
 notifyModule.controller 'notifyCtrl', notifyCtrl
+
+
+notifyModule.factory 'modalService', () ->
+    customers = [
+            name: 'John Smith', city: 'Atlanta' 
+        ,
+            name: 'John Doe', city: 'New York'
+        ,
+            name: 'Jane Dow', city: 'Cincinnati'
+    ]
+    
+    factory = {}
+    factory.getCustomers = ->
+        return customers
+
+    return factory
+
+notifyModule.controller 'SimpleController', ($scope, modalService) ->
+    $scope.customers = []
+
+    console.log modalService.getCustomers()
+
+    init = ->
+        $scope.customers = modalService.getCustomers()
+
+    init()
