@@ -1,11 +1,26 @@
-app = angular.module 'app', []
+notifyModule = angular.module('notifyModule', [])
 
-app.controller 'ModalCtrl', ['$scope', ($scope) ->
-   $scope.page_title = 'el titulo' 
+notifyModule.run ($templateCache, $http) ->
+    modalHtml = $http.get 'views/directives/modal.html'
+    $templateCache.put 'modal.html', modalHtml
+
+notifyModule.factory 'notify', ['$window', (win) ->
+    msgs = []
+    (msg) ->
+        win.alert msg
 ]
 
-app.factory 'ModalService', ->
-    shinyNewModalServiceInstance
-    # factory function body that constructs shinyNewModalServiceInstance
-    return shinyNewModalServiceInstance
+notifyCtrl = (scope, notifyService) ->
+    scope.animals = [
+        name: 'giraffe'
+    ,
+        name: 'elephant'
+    ,
+        name: 'monkey'
+    ]
+    scope.callNotify = (msg) ->
+        notifyService msg
 
+notifyCtrl.$inject = ['$scope', 'notify']
+
+notifyModule.controller 'notifyCtrl', notifyCtrl

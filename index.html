@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app='app'>
+<html ng-app='notifyModule'>
     <head>
         <title>Export Modal: Angular Service</title>
         <link rel='stylesheet' type='text/css' href='style/modal.css'></style>
@@ -7,7 +7,11 @@
         <script src="static/angular.min.js"></script>
         <script src="scripts/controllers.js"></script>
     </head>
-    <body ng-controller='ModalCtrl'>
-        <h1>{{page_title}}</h1>
+
+    <body ng-controller='notifyCtrl'>
+        <input ng-init="message='donkey'" ng-model="message">
+        <input ng-init="mensaje='burrito'" ng-model="mensaje">
+        <button ng-click="callNotify(message)">NOTIFY</button>
+        <div ng-include=" 'modal.html' "></div>
     </body>
 </html>
